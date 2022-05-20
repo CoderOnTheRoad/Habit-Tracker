@@ -5,8 +5,6 @@ const userController = require("../controllers/user-controller")
 
 routes.get('/',homeController.home)
 
-routes.get('/create', homeController.create)
-
 
 routes.post('/create-habit', homeController.createHabit)
 
@@ -16,6 +14,7 @@ routes.get('/delete-activity', homeController.deleteActivity)
 routes.get('/signin', userController.signin)
 
 routes.post('/signin-signup', userController.signinSignup)
+routes.get('/logout', userController.logout)
 
 
 module.exports = routes;

@@ -6,13 +6,9 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    name: {
-        type: String,
-    },
     habbits:[
         {
-            type: mongoose.Schema.ObjectId,
-            ref: 'Habits'
+            type: String
         }
     ]
 }, {

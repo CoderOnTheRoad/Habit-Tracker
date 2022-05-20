@@ -5,12 +5,12 @@ const HabitSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    user : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    user: {
+        type: String,
+        // required: true
     },
-    dates: [{
-        date: String,
-        complete: String
-    }],
+    dates: [String],
 })
+
+const Habit = mongoose.model('Habits', HabitSchema);
+module.exports = Habit;
