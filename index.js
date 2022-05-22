@@ -3,17 +3,12 @@ const port = 8000; // port number
 const path = require('path'); // path
 const cookieParser = require('cookie-parser');
 
-
 const db = require('./config/mongoose');
 const app = express(); 
-
-
 
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
-
-
 
 const session = require('express-session');
 const { time } = require('console');

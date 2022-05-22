@@ -1,19 +1,24 @@
 <%- include('_navigation'); %>
-
 <div id="searh-display">     
-
     <div> 
         <form action="/create-habit" method="POST">
             <input name="habit" type="text" placeholder="Add Your Habit" required>
             <button type="submit"> Add </button>
         </form>
     </div>
-
     <div> 
         <%  for(let h of habits) { %> 
-            <div> <%= h %></div>
-        <% } %>
-        
-        
+            <div>
+                <%= h.content %> 
+                <% let size = h.dates.length - 1 %>
+                <a href="/delete/<%= h.id %>" method="Post"> X </a> 
+                    
+                    <% if(date == h.dates[size].date) { %>
+                        <a href="/done-notdone/?id=<%= h.id %>&date=<%= h.dates[size].date %>">  Status : <%= h.dates[size].status %> </a>
+                    <% } else { %>
+                        <a href="/done-notdone/?id=<%= h.id %>&date=Un-marked">  Status : Un-marked </a>
+                    <% } %>
+            </div>
+       <% } %>
     </div>
 </div>

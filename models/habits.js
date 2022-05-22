@@ -9,7 +9,10 @@ const HabitSchema = new mongoose.Schema({
         type: String,
         // required: true
     },
-    dates: [String],
+    dates: [{
+        date: String,
+        status: String
+    }]
 })
 
 const Habit = mongoose.model('Habits', HabitSchema);
