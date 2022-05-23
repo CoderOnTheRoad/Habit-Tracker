@@ -5,11 +5,12 @@ const userController = require("../controllers/user-controller")
 
 
 
-routes.get('/',homeController.home)
+routes.get('/', homeController.home)
 routes.post('/create-habit', homeController.createHabit)
 routes.get('/delete-activity', homeController.deleteActivity)
 routes.get('/delete/:id', homeController.deleteActivity)
 routes.get('/done-notdone/:?', homeController.markDoneNotDone)
+routes.get('/weekly-report', homeController.weeklyreport)
 
 
 

@@ -1,0 +1,53 @@
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<%- include('_navigation'); %>
+
+    <div>
+        <table>
+            <th> </th>
+            <% for (let i=habits.length; i>=0; i--) { %>
+                <% if(i==habits.length){ 
+                    for(let j=6 ; j>= 0 ; j--){
+                        let d = new Date();
+                        d.setDate(d.getDate() - j);
+                        d = d.toString(); %>
+                        <th> <%= d.substring(4, 15) %> </th>
+                    <% } 
+                } else { %>
+
+                    <tr>
+                        <% for(let j=7 ; j>=0; j--) {
+                            let d = new Date();
+                            d.setDate(d.getDate() - j);
+                            let date = d.getDate().toString() + d.getMonth().toString() +
+                            d.getFullYear().toString();
+                            if(j==7){ %>
+                                <th>
+                                    <%= habits[i].content %>
+                                </th>
+                            <% } else { 
+                                let flag=true; 
+                                for(let k=habits[i].dates.length -1 ; k>= 0 ; --k) {
+                                    if(habits[i].dates[k].date == date) { %>
+                                        <td>
+                                            <% flag=false %>
+                                            <%= habits[i].dates[k].status %>
+                                        </td>
+                                    <% } 
+                                } 
+                                if(flag){ %>
+                                    <td> Un-Marked </td>
+                                <%}
+                            }
+                        }%>
+                    </tr>
+                <% } 
+            } %>
+        </table>
+    </div>

@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    habbits:[
+    habbits: [
         {
             type: String
         }
