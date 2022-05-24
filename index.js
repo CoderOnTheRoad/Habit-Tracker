@@ -12,7 +12,6 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 
-const session = require('express-session');
 const req = require('express/lib/request');
 
 app.use(expressLayouts)
@@ -24,14 +23,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 
 app.use(express.static('assets'))
-
-app.use(
-    session({
-        secret: 'secret',
-        resave: true,
-        saveUninitialized: true
-    })
-);
 
 
 app.use('/', require('./routes'));
