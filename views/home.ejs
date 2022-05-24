@@ -1,23 +1,55 @@
 <%- include('_navigation'); %>
 
 <div id="searh-display">
-    <div>
+    <div id="input">
         <form action="/create-habit" method="POST">
             <input name="habit" type="text" placeholder="Add Your Habit" required>
             <button type="submit"> Add </button>
         </form>
     </div>
-    <div>
+    <div  id="habit">
+        <% let d = new Date();
+        let date = d.getDate().toString() + d.getMonth().toString() + d.getFullYear().toString();%>
         <% for(let h of habits) { %>
             <div>
-                <%= h.content %>
-                <% let size=h.dates.length - 1 %>
-                <a href="/delete/<%= h.id %>" method="Post"> X </a>
-                <% if(date==h.dates[size].date) { %>
-                    <a href="/done-notdone/?id=<%= h.id %>&date=<%= h.dates[size].date %>"> Status : <%=h.dates[size].status %> </a>
-                <% } else { %>
-                    <a href="/done-notdone/?id=<%= h.id %>&date=Un-marked"> Status : Un-marked </a>
+                <% let flag=true;
+                for(let k=h.dates.length - 1 ; k>= 0 ; --k) {
+                    if(date==h.dates[k].date) { 
+                        flag = false %>
+                        <div id="<%=h.dates[k].status %>" class="habit-display">
+
+                            <a id="<%=h.dates[k].status %>" href="/done-notdone/?id=<%= h.id %>&date=<%= date %>&status=<%=h.dates[k].status %>">
+                                <%= h.content %> 
+                            </a>
+                            
+
+                            <a id="<%=h.dates[k].status %>" href="/done-notdone/?id=<%= h.id %>&date=<%= date %>&status=<%=h.dates[k].status %>">
+                                
+                                <%=h.dates[k].status %> 
+                            </a>
+
+                            <a id="<%=h.dates[k].status %>" href="/delete/<%= h.id %>" method="Post"> <i class="fa-solid fa-trash-can"></i> </a>
+
+
+                        </div>
+                        
+                    <% } 
+                }
+                if(flag){ %>
+                    <div id="Un-marked" class="habit-display">
+                        <a id="Un-marked" href="/done-notdone/?id=<%= h.id %>&date=<%= date %>&status=new-status"> 
+                            <%= h.content %>
+                        </a>
+                        <a id="Un-marked" href="/done-notdone/?id=<%= h.id %>&date=<%= date %>&status=new-status"> 
+                            Un-marked 
+                        </a>
+
+                        <a id="Un-marked" href="/delete/<%= h.id %>" method="Post"> <i class="fa-solid fa-trash-can"></i> </a>
+
+                    </div>
+                    
                 <% } %>
+ 
             </div>
         <% } %>
     </div>

@@ -51,7 +51,7 @@ module.exports.createHabit = async (req, res) => {
             let habits = await Habit.create({
                 content: req.body.habit,
                 user: user._id,
-                dates: { date: await getTodayDate(), status: "done" }
+                dates: { date: await getTodayDate(), status: "Un-marked" }
             })
             user.habbits.push(habits.id);
             user.save();
@@ -87,11 +87,12 @@ module.exports.markDoneNotDone = async (req, res) => {
     try {
         let id = req.query.id;
         let date = req.query.date;
+        let status = req.query.status
         let habit = await Habit.findById(id).populate();
 
-        if (date == "Un-marked") {
+        if (status == "new-status") {
             habit.dates.push({
-                date: await getTodayDate(),
+                date: date,
                 status: "done"
             })
             habit.save();
@@ -100,7 +101,9 @@ module.exports.markDoneNotDone = async (req, res) => {
             for (let i = 0; i < habit.dates.length; ++i) {
                 if (habit.dates[i].date == date) {
                     if (habit.dates[i].status == "done") {
-                        habit.dates[i].status = "Not Done"
+                        habit.dates[i].status = "Not-Done"
+                    } else if (habit.dates[i].status == "Not-Done") {
+                        habit.dates[i].status = "Un-marked"
                     } else {
                         habit.dates[i].status = "done"
                     }
@@ -121,7 +124,7 @@ module.exports.weeklyreport = async (req, res) => {
             let habits = await Habit.find({ user: req.cookies.user_id })
             let user = await User.findById(req.cookies.user_id);
             return res.render('weekly-report', {
-                title: "habit tracker | Weekly report",
+                title: "Habit Tracker | Weekly Report",
                 habits: habits,
                 user: user.email
             })

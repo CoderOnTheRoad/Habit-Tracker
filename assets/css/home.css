@@ -40,7 +40,57 @@ a{
     color: rgb(34, 81, 81);
 }
 
+#input{
+    margin: 10px;
+}
+
 #searh-display{
     margin-top: 20px;
     text-align: center;
+}
+
+.habit-display{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+a.habit-display{
+    margin-top: 15px;
+}
+
+#habit{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#done{
+    background-color: rgb(148, 227, 148);
+}
+#Not-Done{
+    background-color: rgb(227, 148, 148);
+    color: white;
+}
+#Un-marked{
+    background-color: rgb(227, 227, 148);
+
+}
+/* #weekly-report{
+    margin: auto;
+} */
+table{
+    margin: auto;
+    margin-top: 15px;
 }
