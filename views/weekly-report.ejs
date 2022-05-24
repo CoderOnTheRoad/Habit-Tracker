@@ -3,6 +3,7 @@
     <div id="weekly-report">
         <table>
             <th> </th>
+            <!-- iterate over all habits and extract past 7 days report -->
             <% for (let i=habits.length; i>=0; i--) { %>
                 <% if(i==habits.length){ 
                     for(let j=6 ; j>= 0 ; j--){

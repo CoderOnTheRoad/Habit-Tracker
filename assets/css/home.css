@@ -1,6 +1,8 @@
+
 html{
     background-color: rgb(174, 242, 242);
 }
+
 
 h1{
     margin: auto;
@@ -93,4 +95,11 @@ td {
 table{
     margin: auto;
     margin-top: 15px;
+}
+
+
+#login{
+    width: 250px;
+    margin: auto;
+    margin-top: 25px;
 }
