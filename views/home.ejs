@@ -1,10 +1,10 @@
 <%- include('_navigation'); %>
 
-<div id="searh-display">
+<div id="searh-display" >
     <div id="input">
-        <form action="/create-habit" method="POST">
-            <input name="habit" type="text" placeholder="Add Your Habit" required>
-            <button type="submit"> Add </button>
+        <form action="/create-habit" method="POST" class="signin-form row justify-content-center">
+            <input name="habit" type="text" placeholder="Add Your Habit" class="form-control" required>
+            <button type="submit" class="form-control btn btn-primary submit px-3"> Add </button>
         </form>
     </div>
     <div  id="habit">
